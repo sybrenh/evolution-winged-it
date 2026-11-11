@@ -1,0 +1,748 @@
+<title>Nature's Workarounds</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Caveat:wght@700&family=DM+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400..600;1,7..72,400..600&display=swap">
+<style>
+/* Layout: a picture book of full-bleed colour plates, one animal per plate, story and
+   diagram side by side and swapping sides; a paper-coloured frame opens and closes it. */
+:root{
+  /* frame */
+  --paper:#E9EEE4; --ink:#16233B; --muted:#55627A; --pen:#D8392B; --line:#16233B33;
+  /* plates: fixed posters, each with its own ground and ink */
+  --sea-bg:#17607A; --sea-fg:#F2F5EC; --sea-wet:#8AD3E2; --sea-dry:#F4C95D; --sea-deep:#0F4A60; --sea-skin:#C9DEE3; --sea-fin:#9DBEC8; --sea-fur:#C07A3E;
+  --bamboo-bg:#CFE0A8; --bamboo-fg:#16233B; --bamboo-stalk:#4E8B3A; --bamboo-node:#356626; --panda-k:#1D1D22; --panda-pad:#6B5A60; --panda-claw:#F7F4E8;
+  --plum-bg:#4B2E5E; --plum-fg:#F6EFE4; --hen-white:#FFF8EA; --hen-red:#F0503A; --hen-beak:#F2A93B; --plum-soft:#8E6FA6;
+  --pink-bg:#FAD4D8; --pink-fg:#3A1230; --flam:#EF5B7F; --flam-bill:#FFF3E2;
+  --forest-bg:#1F4A3A; --forest-fg:#EFF2E2; --kiwi:#B07A45; --egg:#F5EBCB; --forest-soft:#2F6350;
+  --sky-bg:#BFE0EE; --sky-fg:#16233B; --giraffe:#E9A93A; --giraffe-spot:#B9781F; --nerve:#D7263D; --heart:#8E1B2C; --spark:#FFFFFF;
+  --abyss-bg:#0A0F24; --abyss-fg:#DCE4F5; --angler:#232C5C; --angler-edge:#3A4686; --lure:#FFE27A; --male:#8FA0F0;
+  --sand-bg:#E3D2A2; --sand-fg:#2B2A1E; --plaice:#6E7B4A; --plaice-fin:#566138; --seabed:#CDB77C; --eye-white:#FFFDF4;
+  --red-bg:#C8402F; --red-fg:#FFF2E6; --crab:#FFB38A; --crab-shade:#F28C5E; --red-deep:#8F2518;
+  /* type */
+  --display:"Bricolage Grotesque","Arial Narrow",Arial,sans-serif;
+  --text:"Literata",Georgia,"Times New Roman",serif;
+  --mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+  --hand:"Caveat","Bradley Hand","Segoe Print",cursive;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --paper:#0E1524; --ink:#E7ECF2; --muted:#9AA7BD; --pen:#FF6B5A; --line:#E7ECF233; color-scheme:dark }
+}
+:root[data-theme="dark"]{ --paper:#0E1524; --ink:#E7ECF2; --muted:#9AA7BD; --pen:#FF6B5A; --line:#E7ECF233; color-scheme:dark }
+
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--text);font-size:1.0625rem;line-height:1.62;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+p,h1,h2,h3,figure,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+svg{display:block;width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+
+.wrap{max-width:70rem;margin:0 auto;padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* ---------- hero ---------- */
+.hero .wrap{padding-block:clamp(2.5rem,7vw,5rem) clamp(2.5rem,6vw,4rem);display:grid;gap:clamp(1.5rem,3vw,2.25rem)}
+.hero .mono{color:var(--muted)}
+.top{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center;justify-content:space-between}
+.lang{display:inline-flex;gap:2px;border:1.5px solid var(--ink);border-radius:999px;padding:2px;font-family:var(--mono);font-size:.78rem;line-height:1.2}
+.lang a,.lang span{text-decoration:none;padding:.32rem .8rem;border-radius:999px}
+.lang span{background:var(--ink);color:var(--paper)}
+.lang a:hover{background:var(--line)}
+h1{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:clamp(3.2rem,11.5vw,9rem);line-height:.9;letter-spacing:-.03em}
+h1 .first{display:block}
+h1 del{text-decoration:none;position:relative;display:inline-block}
+h1 del::after{content:"";position:absolute;left:-4%;right:-4%;top:54%;height:.085em;border-radius:.05em;background:var(--pen);transform:rotate(-3deg);transform-origin:left center;animation:strike .5s .4s both cubic-bezier(.6,0,.2,1)}
+h1 ins{text-decoration:none;display:inline-block;font-family:var(--hand);font-weight:700;font-stretch:100%;letter-spacing:0;color:var(--pen);font-size:1.02em;line-height:.8;margin-left:.12em;transform:rotate(-4deg);animation:scrawl .45s .85s both}
+@keyframes strike{from{transform:rotate(-3deg) scaleX(0)}to{transform:rotate(-3deg) scaleX(1)}}
+@keyframes scrawl{from{opacity:0;transform:rotate(-9deg) translateY(.12em)}to{opacity:1;transform:rotate(-4deg)}}
+.lede{max-width:38rem;font-size:clamp(1.1rem,1rem + .5vw,1.3rem);line-height:1.5}
+.toc{display:flex;flex-wrap:wrap;gap:.5rem}
+.toc a{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.82rem;text-decoration:none;padding:.42rem .8rem .42rem .5rem;border:1.5px solid var(--ink);border-radius:999px;transition:background .15s,color .15s}
+.toc a:hover{background:var(--ink);color:var(--paper)}
+.toc i{width:.95rem;height:.95rem;border-radius:50%;background:var(--c);border:1.5px solid var(--ink)}
+
+/* ---------- progress rail: slides in once the hero is behind you ---------- */
+.rail{position:fixed;inset:0 0 auto;z-index:20;background:var(--paper);color:var(--ink);border-bottom:1.5px solid var(--line);padding-top:env(safe-area-inset-top,0px);transform:translateY(-110%);visibility:hidden;transition:transform .3s ease,visibility 0s .3s}
+.rail.is-on{transform:none;visibility:visible;transition:transform .3s ease,visibility 0s}
+.rail ol{position:relative;display:flex;gap:.2rem;overflow-x:auto;scrollbar-width:none;max-width:70rem;margin:0 auto;padding-block:.45rem;padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px))}
+.rail ol::-webkit-scrollbar{display:none}
+.rail a{display:block;white-space:nowrap;font-family:var(--mono);font-size:.76rem;text-decoration:none;padding:.3rem .7rem;border-radius:999px;color:var(--muted);transition:background .2s,color .2s}
+.rail a:hover{color:var(--ink)}
+.rail a[aria-current="true"]{background:var(--ink);color:var(--paper)}
+.rail__bar{position:absolute;left:0;bottom:-2px;height:3px;width:100%;background:var(--pen);transform-origin:left center;transform:scaleX(0)}
+.plate,.you{scroll-margin-top:2.4rem}
+.next{justify-self:start;font-family:var(--mono);font-size:.85rem;text-decoration:none;border:1.5px solid var(--fg);border-radius:999px;padding:.5rem 1rem;margin-top:.6rem;transition:background .15s,color .15s}
+.next:hover{background:var(--fg);color:var(--bg)}
+.js-reveal .plate__fig{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.js-reveal .plate__fig:not(.is-in){transform:translateY(2.2rem) scale(.96)}
+
+/* ---------- plates ---------- */
+.plate{background:var(--bg);color:var(--fg)}
+.plate__in{max-width:70rem;margin:0 auto;padding-block:clamp(3rem,8vw,6rem);padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px));display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);grid-template-rows:auto 1fr;grid-template-areas:"head fig" "body fig";column-gap:clamp(2rem,6vw,5rem);row-gap:1.5rem}
+.plate--flip .plate__in{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);grid-template-areas:"fig head" "fig body"}
+.plate__head{grid-area:head;display:grid;gap:.9rem;min-width:0}
+.plate__body{grid-area:body;display:grid;gap:1.1rem;align-content:start;min-width:0}
+.plate__body>p{max-width:34rem}
+.plate__fig{grid-area:fig;align-self:center;justify-self:center;width:100%;max-width:30rem;display:grid;gap:1rem;min-width:0}
+@media (max-width:52rem){
+  .plate__in,.plate--flip .plate__in{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"head" "fig" "body"}
+}
+.tag{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.tag i{font-family:var(--text);font-size:.95rem;letter-spacing:0;text-transform:none;opacity:.85;margin-left:.5em}
+h2{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:clamp(2.1rem,1.2rem + 3.4vw,3.6rem);line-height:.98;letter-spacing:-.02em;text-wrap:balance}
+.tell{border-top:2px solid var(--fg);padding-top:.8rem;display:grid;gap:.35rem;max-width:34rem;margin-top:.4rem}
+.tell h3{font-family:var(--mono);font-weight:500;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.tell p{font-family:var(--display);font-weight:600;font-size:1.18rem;line-height:1.3}
+.src{font-family:var(--mono);font-size:.76rem;line-height:1.5;opacity:.8}
+.src i{font-style:italic}
+figcaption,.cap{font-family:var(--mono);font-size:.8rem;line-height:1.5}
+.btn{font-family:var(--mono);font-size:.85rem;background:var(--fg);color:var(--bg);border:0;border-radius:999px;padding:.65rem 1.15rem;cursor:pointer;justify-self:start}
+.btn:hover{opacity:.88}
+
+#dolphin{--bg:var(--sea-bg);--fg:var(--sea-fg)}
+#panda{--bg:var(--bamboo-bg);--fg:var(--bamboo-fg)}
+#hen{--bg:var(--plum-bg);--fg:var(--plum-fg)}
+#flamingo{--bg:var(--pink-bg);--fg:var(--pink-fg)}
+#kiwi{--bg:var(--forest-bg);--fg:var(--forest-fg)}
+#giraffe{--bg:var(--sky-bg);--fg:var(--sky-fg)}
+#anglerfish{--bg:var(--abyss-bg);--fg:var(--abyss-fg)}
+#flatfish{--bg:var(--sand-bg);--fg:var(--sand-fg)}
+#crab{--bg:var(--red-bg);--fg:var(--red-fg)}
+
+/* dolphin: the trek */
+.trek{border:2px solid var(--sea-deep);border-radius:10px;overflow:hidden}
+.trek li{display:grid;grid-template-columns:clamp(7.5rem,42%,12.5rem) minmax(0,1fr);font-size:.95rem;line-height:1.4}
+.trek li+li{border-top:2px solid var(--sea-bg)}
+.trek__pic{background:var(--sea-deep);display:flex;align-items:flex-end}
+.trek__txt{padding:.7rem .9rem;display:grid;gap:.25rem;align-content:center}
+.trek .when{font-family:var(--mono);font-size:.82rem}
+.trek .when small{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--sea-dry);margin-left:.6em}
+.trek__n{font-family:var(--mono);font-size:11px;font-weight:500;fill:var(--sea-deep)}
+@media (max-width:30rem){.trek li{grid-template-columns:minmax(0,1fr)}}
+
+/* flamingo */
+#flam-svg{transition:transform .7s cubic-bezier(.5,0,.2,1)}
+#flam-svg.is-flipped{transform:rotate(180deg)}
+
+/* kiwi bars */
+.bars{display:grid;gap:.55rem}
+.bars li{display:grid;grid-template-columns:6.5rem minmax(0,1fr);gap:.75rem;align-items:center;font-family:var(--mono);font-size:.8rem}
+.bars .track{display:flex;align-items:center;gap:.5rem}
+.bars .fill{height:.9rem;width:calc((100% - 5.75rem) * var(--n));background:var(--egg);border-radius:2px;flex:none}
+.bars .hot .fill{background:var(--kiwi)}
+
+/* giraffe */
+#giraffe .plate__fig{max-width:21rem}
+.g-label{font-family:var(--mono);font-size:15px;fill:var(--sky-fg)}
+.pulse{stroke-dasharray:14 986;animation:pulse 5s linear infinite}
+@keyframes pulse{from{stroke-dashoffset:0}to{stroke-dashoffset:-1000}}
+
+/* flatfish */
+.slide{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.75rem;align-items:center;font-family:var(--mono);font-size:.78rem}
+.slide input{width:100%;accent-color:var(--sand-fg)}
+
+/* hen & horse */
+.hen-svg{max-width:15rem;justify-self:center}
+.feet{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;text-align:center}
+.feet li{display:grid;gap:.35rem;font-family:var(--mono);font-size:.68rem;line-height:1.35}
+.feet b{font-weight:500;font-size:.74rem;overflow-wrap:anywhere}
+.feet span{opacity:.8}
+
+/* crab */
+.five{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center}
+.five li{font-family:var(--mono);font-size:.76rem;border:1.5px solid var(--fg);border-radius:999px;padding:.25rem .7rem}
+
+/* ---------- you ---------- */
+.you .wrap{padding-block:clamp(3rem,8vw,6rem);display:grid;gap:clamp(1.75rem,4vw,2.75rem)}
+.you header{display:grid;gap:.9rem;max-width:40rem}
+.you .tag,.fin .mono{color:var(--muted)}
+.faults{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:2rem clamp(1.5rem,4vw,3rem)}
+.faults li{border-top:2px solid var(--ink);padding-top:.8rem;display:grid;gap:.5rem;align-content:start;min-width:0}
+.faults h3{font-family:var(--display);font-weight:700;font-stretch:85%;font-size:1.45rem;line-height:1.1}
+.faults p{font-size:1rem;line-height:1.55}
+.blind{display:flex;justify-content:space-between;align-items:center;max-width:19rem;padding:1.1rem 1.4rem;border:1.5px solid var(--line);border-radius:6px;font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1}
+.blind i{width:1.1rem;height:1.1rem;border-radius:50%;background:var(--ink)}
+
+/* ---------- closing ---------- */
+.fin{border-top:1.5px solid var(--line)}
+.fin .wrap{padding-block:clamp(3rem,8vw,6rem);display:grid;gap:clamp(2rem,5vw,3.5rem)}
+blockquote{margin:0;display:grid;gap:1rem;max-width:56rem}
+blockquote p{font-family:var(--display);font-weight:800;font-stretch:78%;font-size:clamp(2rem,1.1rem + 4vw,4.2rem);line-height:1;letter-spacing:-.02em;text-wrap:balance}
+blockquote p::before{content:"\201C";color:var(--pen)}
+blockquote p::after{content:"\201D";color:var(--pen)}
+.after{max-width:38rem}
+.shelf{display:grid;gap:1rem}
+.shelf ul{display:grid;border-top:1.5px solid var(--line)}
+.shelf li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:.25rem 1.5rem;padding:.7rem 0;border-bottom:1.5px solid var(--line);font-size:1rem;line-height:1.45}
+.shelf li b{font-weight:600;font-style:italic}
+.shelf li small{font-family:var(--mono);font-style:normal;font-weight:400;font-size:.76rem;color:var(--muted);margin-left:.4em}
+@media (max-width:40rem){.shelf li{grid-template-columns:minmax(0,1fr)}}
+.note{font-family:var(--mono);font-size:.74rem;line-height:1.6;color:var(--muted);max-width:44rem}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  h1 del::after,h1 ins,.pulse{animation:none}
+  #flam-svg,.rail,.rail.is-on{transition:none}
+}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="top">
+      <p class="mono">Ten animals, fixed with whatever was lying around</p>
+      <!--LANG-->
+    </div>
+    <h1><span class="first">Nature's finest</span> <del>designs</del> <ins>workarounds</ins></h1>
+    <p class="lede">Evolution can't send anything back to the drawing board. Each generation inherits the last one's body and can only adjust it, so living things are full of patches, detours and parts doing jobs they were never meant for. Stephen Jay Gould wrote 300 monthly essays arguing that these oddities are the best evidence for evolution there is. Here are ten, several straight from his pages.</p>
+    <nav aria-label="The ten animals">
+      <ol class="toc">
+        <li><a href="#dolphin"><i style="--c:var(--sea-bg)"></i>Dolphin</a></li>
+        <li><a href="#panda"><i style="--c:var(--bamboo-bg)"></i>Panda</a></li>
+        <li><a href="#hen"><i style="--c:var(--plum-bg)"></i>Hen &amp; horse</a></li>
+        <li><a href="#flamingo"><i style="--c:var(--pink-bg)"></i>Flamingo</a></li>
+        <li><a href="#kiwi"><i style="--c:var(--forest-bg)"></i>Kiwi</a></li>
+        <li><a href="#giraffe"><i style="--c:var(--sky-bg)"></i>Giraffe</a></li>
+        <li><a href="#anglerfish"><i style="--c:var(--abyss-bg)"></i>Anglerfish</a></li>
+        <li><a href="#flatfish"><i style="--c:var(--sand-bg)"></i>Flatfish</a></li>
+        <li><a href="#crab"><i style="--c:var(--red-bg)"></i>Crab</a></li>
+        <li><a href="#you"><i style="--c:var(--paper)"></i>You</a></li>
+      </ol>
+    </nav>
+  </div>
+</header>
+
+<nav class="rail" id="rail" aria-label="Jump to an animal">
+  <ol id="rail-list">
+    <li><a href="#dolphin">Dolphin</a></li>
+    <li><a href="#panda">Panda</a></li>
+    <li><a href="#hen">Hen &amp; horse</a></li>
+    <li><a href="#flamingo">Flamingo</a></li>
+    <li><a href="#kiwi">Kiwi</a></li>
+    <li><a href="#giraffe">Giraffe</a></li>
+    <li><a href="#anglerfish">Anglerfish</a></li>
+    <li><a href="#flatfish">Flatfish</a></li>
+    <li><a href="#crab">Crab</a></li>
+    <li><a href="#you">You</a></li>
+  </ol>
+  <span class="rail__bar" id="rail-bar"></span>
+</nav>
+
+<main>
+
+<!-- ================= DOLPHIN ================= -->
+<section class="plate" id="dolphin">
+  <div class="plate__in">
+    <div class="plate__head">
+      <p class="tag">Bottlenose dolphin <i>Tursiops truncatus</i></p>
+      <h2>Left the sea, grew legs, changed its mind</h2>
+    </div>
+    <figure class="plate__fig">
+      <ol class="trek">
+        <li>
+          <div class="trek__pic"><svg viewBox="0 0 200 110" role="img" aria-label="A flat-headed fish in shallow water, propped on a sandy slope with its eyes above the surface."><rect width="200" height="110" fill="var(--sea-deep)"/><path d="M96 110 C140 100 172 78 200 44 V110Z" fill="var(--sea-dry)"/><path d="M38 70 L20 60 L25 74 L20 88 L38 79 C70 88 112 88 142 82 L168 75 L172 69 L166 64 L142 62 C112 58 70 62 38 70Z" fill="var(--sea-skin)"/><path d="M132 82 L143 93 L151 90 M72 84 L66 94" stroke="var(--sea-fin)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="151" cy="62" r="4.5" fill="var(--sea-skin)"/><circle cx="152" cy="61.5" r="1.9" fill="var(--sea-deep)"/><path d="M0 66 q12.5 -7 25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 V110 H0Z" fill="var(--sea-wet)" opacity=".3"/><circle cx="15" cy="15" r="9.5" fill="var(--sea-fg)" stroke="var(--sea-deep)" stroke-width="1.5"/><text class="trek__n" x="15" y="19" text-anchor="middle">1</text></svg></div>
+          <div class="trek__txt"><span class="when">375 Mya<small>leaving the sea</small></span><span>Fish like <b>Tiktaalik</b>, with wrists inside their fins, prop themselves up in the shallows. Their kin walk away.</span></div>
+        </li>
+        <li>
+          <div class="trek__pic"><svg viewBox="0 0 200 110" role="img" aria-label="A four-legged, long-snouted mammal with a long tail standing on a riverbank."><rect width="200" height="110" fill="var(--sea-deep)"/><path d="M0 80 H200 V110 H0Z" fill="var(--sea-dry)"/><path d="M146 110 C160 94 182 90 200 88 V110Z" fill="var(--sea-wet)" opacity=".55"/><path d="M62 52 C46 48 36 58 22 52" stroke="var(--sea-fur)" stroke-width="4.5" stroke-linecap="round" fill="none"/><path d="M70 62 L66 80 M82 66 L82 80 M112 66 L114 80 M124 62 L128 80" stroke="var(--sea-fur)" stroke-width="5.5" stroke-linecap="round" fill="none"/><ellipse cx="96" cy="56" rx="36" ry="13" fill="var(--sea-fur)"/><path d="M122 48 L150 38 L178 46 L178 52 L150 57 L128 64Z" fill="var(--sea-fur)"/><path d="M143 40 L147 29 L154 38Z" fill="var(--sea-fur)"/><circle cx="157" cy="44" r="1.9" fill="var(--sea-deep)"/><circle cx="15" cy="15" r="9.5" fill="var(--sea-fg)" stroke="var(--sea-deep)" stroke-width="1.5"/><text class="trek__n" x="15" y="19" text-anchor="middle">2</text></svg></div>
+          <div class="trek__txt"><span class="when">50 Mya<small>on land</small></span><span><b>Pakicetus</b>, a wolf-sized hoofed mammal, hunts along riverbanks in what is now Pakistan.</span></div>
+        </li>
+        <li>
+          <div class="trek__pic"><svg viewBox="0 0 200 110" role="img" aria-label="A long, low, crocodile-shaped mammal sliding off a bank, its front half under water."><rect width="200" height="110" fill="var(--sea-deep)"/><path d="M0 40 C40 44 76 70 110 110 H0Z" fill="var(--sea-dry)"/><g transform="rotate(8 100 62)"><path d="M64 62 C48 58 36 66 18 58" stroke="var(--sea-fur)" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M128 68 L134 82 L146 84 M82 68 L78 84 L90 87" stroke="var(--sea-fur)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><ellipse cx="104" cy="62" rx="44" ry="10" fill="var(--sea-fur)"/><path d="M140 54 L182 60 L182 65 L140 70Z" fill="var(--sea-fur)"/><circle cx="150" cy="58.5" r="1.9" fill="var(--sea-deep)"/></g><path d="M0 68 q12.5 -7 25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 V110 H0Z" fill="var(--sea-wet)" opacity=".3"/><circle cx="15" cy="15" r="9.5" fill="var(--sea-fg)" stroke="var(--sea-deep)" stroke-width="1.5"/><text class="trek__n" x="15" y="19" text-anchor="middle">3</text></svg></div>
+          <div class="trek__txt"><span class="when">49 Mya<small>wading back</small></span><span><b>Ambulocetus</b>, whose name means walking whale, paddles on big feet and ambushes prey like a crocodile.</span></div>
+        </li>
+        <li>
+          <div class="trek__pic"><svg viewBox="0 0 200 110" role="img" aria-label="A long, snake-like whale under water. A dashed ring marks a pair of tiny hind legs near its tail."><rect width="200" height="110" fill="var(--sea-deep)"/><path d="M36 57 L16 44 L24 58 L16 72Z" fill="var(--sea-skin)"/><path d="M34 58 C58 34 88 78 120 56 S162 46 170 52" stroke="var(--sea-skin)" stroke-width="13" stroke-linecap="round" fill="none"/><ellipse cx="177" cy="52" rx="17" ry="7.5" fill="var(--sea-skin)"/><ellipse cx="150" cy="56" rx="10" ry="4" transform="rotate(35 150 56)" fill="var(--sea-fin)"/><path d="M70 62 L66 72 L71 74" stroke="var(--sea-fin)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="69" cy="69" r="11" fill="none" stroke="var(--sea-dry)" stroke-width="2" stroke-dasharray="4 4"/><circle cx="181" cy="50" r="1.7" fill="var(--sea-deep)"/><path d="M0 16 q12.5 -7 25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 V110 H0Z" fill="var(--sea-wet)" opacity=".3"/><circle cx="15" cy="15" r="9.5" fill="var(--sea-fg)" stroke="var(--sea-deep)" stroke-width="1.5"/><text class="trek__n" x="15" y="19" text-anchor="middle">4</text></svg></div>
+          <div class="trek__txt"><span class="when">40 Mya<small>at sea</small></span><span><b>Basilosaurus</b> is up to 18 metres long and never leaves the water. It still has tiny hind legs, ringed here, with knees and toes.</span></div>
+        </li>
+        <li>
+          <div class="trek__pic"><svg viewBox="0 0 200 110" role="img" aria-label="A dolphin under water. Arrows beside its tail point up and down."><rect width="200" height="110" fill="var(--sea-deep)"/><g transform="translate(196 16) scale(-.72 .72)"><path d="M118 36 C126 18 140 10 150 10 C143 22 143 30 148 38 Z" fill="var(--sea-fin)"/><path d="M18 66 L40 60 C48 44 80 34 110 34 C150 34 185 48 212 62 L232 46 L226 66 L234 84 L210 70 C180 84 140 90 100 88 C70 86 50 80 40 72 Z" fill="var(--sea-skin)"/><path d="M88 84 C92 98 102 106 112 108 C108 98 106 90 104 86 Z" fill="var(--sea-fin)"/><circle cx="56" cy="60" r="2.6" fill="var(--sea-deep)"/></g><path d="M13 49 V77" stroke="var(--sea-dry)" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M8 51 L13 41 L18 51Z M8 75 L13 85 L18 75Z" fill="var(--sea-dry)"/><path d="M0 14 q12.5 -7 25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 V110 H0Z" fill="var(--sea-wet)" opacity=".3"/><circle cx="15" cy="15" r="9.5" fill="var(--sea-fg)" stroke="var(--sea-deep)" stroke-width="1.5"/><text class="trek__n" x="15" y="19" text-anchor="middle">5</text></svg></div>
+          <div class="trek__txt"><span class="when">Today<small>at sea</small></span><span><b>Dolphins.</b> The hind legs are gone, apart from buds that appear in the embryo and fade. The tail beats up and down.</span></div>
+        </li>
+      </ol>
+      <figcaption>Yellow is dry land. Each animal is drawn at its own scale.</figcaption>
+    </figure>
+    <div class="plate__body">
+      <p>Some 375 million years ago, fish hauled themselves onto land. Their descendants grew legs, lungs and fur, and in time became mammals. Then, about 50 million years ago, one hoofed mammal started wading back in.</p>
+      <p>Its descendants are the whales and dolphins, and they kept everything land had given them. They breathe air, so they must surface every few minutes for life. They nurse their young underwater. Their nostrils crept to the top of the head and became a blowhole. Their closest living relatives are hippos.</p>
+      <aside class="tell">
+        <h3>The giveaway</h3>
+        <p>Fish swing their tails from side to side. Dolphins beat theirs up and down, because their spine still bends the way a running mammal's does. A swimming dolphin is galloping.</p>
+      </aside>
+      <p class="src">Gould, “Hooking Leviathan by Its Past”, in <i>Dinosaur in a Haystack</i> (1995)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PANDA ================= -->
+<section class="plate plate--flip" id="panda">
+  <div class="plate__in">
+    <div class="plate__head">
+      <p class="tag">Giant panda <i>Ailuropoda melanoleuca</i></p>
+      <h2>The bear that built a thumb out of its wrist</h2>
+    </div>
+    <figure class="plate__fig">
+      <svg viewBox="0 0 480 380" role="img" aria-label="A panda's paw holding a bamboo stalk. Five clawed fingers sit in a row; a sixth pad on the side, ringed, pinches the stalk.">
+        <ellipse cx="255" cy="225" rx="125" ry="120" fill="var(--panda-k)"/>
+        <g fill="var(--panda-claw)">
+          <path d="M142 94 L158 94 L150 70Z M197 58 L213 58 L205 34Z M250 46 L266 46 L258 22Z M303 60 L319 60 L311 36Z M352 98 L368 98 L360 74Z"/>
+        </g>
+        <g fill="var(--panda-k)">
+          <ellipse cx="150" cy="122" rx="27" ry="33"/><ellipse cx="205" cy="86" rx="27" ry="33"/><ellipse cx="258" cy="74" rx="27" ry="33"/><ellipse cx="311" cy="88" rx="27" ry="33"/><ellipse cx="360" cy="126" rx="27" ry="33"/>
+        </g>
+        <g fill="var(--panda-pad)">
+          <ellipse cx="150" cy="124" rx="14" ry="17"/><ellipse cx="205" cy="88" rx="14" ry="17"/><ellipse cx="258" cy="76" rx="14" ry="17"/><ellipse cx="311" cy="90" rx="14" ry="17"/><ellipse cx="360" cy="128" rx="14" ry="17"/>
+          <ellipse cx="266" cy="232" rx="78" ry="60"/>
+        </g>
+        <path d="M118 372 L206 8" stroke="var(--bamboo-stalk)" stroke-width="32" fill="none"/>
+        <path d="M124.4 277.2 L155.6 284.8 M150.8 168 L182 175.6 M177.2 58.8 L208.4 66.4" stroke="var(--bamboo-node)" stroke-width="4" fill="none"/>
+        <g transform="rotate(-18 134 264)">
+          <ellipse cx="134" cy="264" rx="30" ry="42" fill="var(--panda-k)"/>
+          <ellipse cx="134" cy="266" rx="15" ry="24" fill="var(--panda-pad)"/>
+          <ellipse cx="134" cy="264" rx="47" ry="60" fill="none" stroke="var(--nerve)" stroke-width="3.5" stroke-dasharray="7 7"/>
+        </g>
+      </svg>
+      <figcaption>Five real fingers in a row. Ringed in red: the false thumb, a wrist bone pressed into service.</figcaption>
+    </figure>
+    <div class="plate__body">
+      <p>Pandas are bears, and bears are built to eat meat. Pandas eat bamboo anyway, for up to 14 hours a day, with a carnivore's gut that digests less than a fifth of it.</p>
+      <p>Stripping bamboo takes a thumb. A bear's real thumb was lined up with the other four fingers long ago, fine for clawing and useless for gripping. So evolution enlarged a small wrist bone, the radial sesamoid, until it stuck out far enough to pinch a stalk against. The muscles that work it were rerouted from the real thumb next door.</p>
+      <p>Gould made this the title essay of his best-known book. No engineer would build it, he wrote. A tinkerer with nothing but a bear to work with would.</p>
+      <aside class="tell">
+        <h3>The giveaway</h3>
+        <p>The false thumb has no joints and no claw. It is one lump of bone under a pad, which makes the panda the only bear that appears to have six fingers.</p>
+      </aside>
+      <p class="src">Gould, “The Panda's Thumb”, in <i>The Panda's Thumb</i> (1980)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HEN & HORSE ================= -->
+<section class="plate" id="hen">
+  <div class="plate__in">
+    <div class="plate__head">
+      <p class="tag">Chicken <i>Gallus gallus</i> &amp; horse <i>Equus caballus</i></p>
+      <h2>Chickens still know how to grow teeth</h2>
+    </div>
+    <figure class="plate__fig">
+      <svg class="hen-svg" viewBox="0 0 240 230" role="img" aria-label="A hen with her beak open, showing a row of small teeth.">
+        <ellipse cx="158" cy="262" rx="84" ry="92" fill="var(--hen-white)"/>
+        <ellipse cx="108" cy="170" rx="10" ry="19" fill="var(--hen-red)"/>
+        <circle cx="112" cy="58" r="16" fill="var(--hen-red)"/><circle cx="134" cy="50" r="17" fill="var(--hen-red)"/><circle cx="157" cy="60" r="16" fill="var(--hen-red)"/>
+        <path d="M86 94 L26 112 L88 118Z" fill="var(--hen-beak)"/>
+        <path d="M88 124 L38 138 L90 142Z" fill="var(--hen-beak)"/>
+        <path d="M40 113 L48 114 L44 122Z M52 114 L60 115 L56 123Z M64 115 L72 116 L68 124Z M48 135 L56 133 L51 126Z M60 132 L68 130 L63 123Z M72 129 L80 127 L75 120Z" fill="var(--hen-white)"/>
+        <circle cx="132" cy="112" r="54" fill="var(--hen-white)"/>
+        <circle cx="112" cy="98" r="7" fill="var(--plum-bg)"/><circle cx="110" cy="96" r="2.2" fill="var(--hen-white)"/>
+      </svg>
+      <ul class="feet" aria-label="Horse front feet through time">
+        <li>
+          <svg viewBox="0 0 80 150" role="img" aria-label="Four toes"><g stroke="var(--hen-white)" stroke-linecap="round" fill="none"><path d="M28 18 L14 118 M36 12 L30 128 M44 12 L50 128 M52 18 L66 118" stroke-width="5"/></g><g fill="var(--hen-beak)"><ellipse cx="13" cy="124" rx="6" ry="8"/><ellipse cx="30" cy="134" rx="6" ry="8"/><ellipse cx="50" cy="134" rx="6" ry="8"/><ellipse cx="67" cy="124" rx="6" ry="8"/></g><path d="M2 146 H78" stroke="var(--plum-soft)" stroke-width="2"/></svg>
+          <b>Hyracotherium</b><span>55 Mya · 4 toes</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 80 150" role="img" aria-label="Three toes"><g stroke="var(--hen-white)" stroke-linecap="round" fill="none"><path d="M40 10 V124" stroke-width="9"/><path d="M30 26 L20 116 M50 26 L60 116" stroke-width="5"/></g><g fill="var(--hen-beak)"><ellipse cx="40" cy="133" rx="9" ry="10"/><ellipse cx="19" cy="123" rx="6" ry="8"/><ellipse cx="61" cy="123" rx="6" ry="8"/></g><path d="M2 146 H78" stroke="var(--plum-soft)" stroke-width="2"/></svg>
+          <b>Mesohippus</b><span>35 Mya · 3 toes</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 80 150" role="img" aria-label="Three toes, the outer two short"><g stroke="var(--hen-white)" stroke-linecap="round" fill="none"><path d="M40 10 V122" stroke-width="12"/><path d="M28 24 L24 92 M52 24 L56 92" stroke-width="4"/></g><g fill="var(--hen-beak)"><ellipse cx="40" cy="132" rx="11" ry="11"/><ellipse cx="24" cy="98" rx="4.5" ry="6"/><ellipse cx="56" cy="98" rx="4.5" ry="6"/></g><path d="M2 146 H78" stroke="var(--plum-soft)" stroke-width="2"/></svg>
+          <b>Merychippus</b><span>15 Mya · 3, two dangling</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 80 150" role="img" aria-label="One toe with two thin splints beside it"><g stroke="var(--hen-white)" stroke-linecap="round" fill="none"><path d="M40 10 V118" stroke-width="15"/><path d="M27 16 L30 66 M53 16 L50 66" stroke-width="3"/></g><path d="M27 143 L31 120 H49 L53 143Z" fill="var(--hen-beak)"/><path d="M2 146 H78" stroke="var(--plum-soft)" stroke-width="2"/></svg>
+          <b>Equus</b><span>today · 1 toe, 2 splints</span>
+        </li>
+      </ul>
+      <figcaption>Above: what a hen's genes still half remember. Below: a horse's front foot losing toes.</figcaption>
+    </figure>
+    <div class="plate__body">
+      <p>Birds lost their teeth roughly 100 million years ago. The instructions were never fully deleted. In 1980 researchers paired chick jaw tissue with tissue from a mouse embryo, and the graft grew teeth. In 2006 a mutant chicken embryo turned up with rows of cone-shaped tooth buds, like a baby crocodile's.</p>
+      <p>Horses tell the same story from the other end. Their ancestors trotted on three or four toes per foot. A modern horse stands on one. Now and then a foal is born with an extra toe or two, small hooves and all. Julius Caesar is said to have ridden such a horse.</p>
+      <p>For Gould, throwbacks like these showed that the past stays on file. Old genes are rarely erased. They are switched off, and a switch can slip.</p>
+      <aside class="tell">
+        <h3>The giveaway</h3>
+        <p>A horse's front “knee” is its wrist. It runs on the tip of one middle finger, and the hoof is the fingernail.</p>
+      </aside>
+      <p class="src">Gould, “Hen's Teeth and Horse's Toes”, in <i>Hen's Teeth and Horse's Toes</i> (1983)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FLAMINGO ================= -->
+<section class="plate plate--flip" id="flamingo">
+  <div class="plate__in">
+    <div class="plate__head">
+      <p class="tag">Greater flamingo <i>Phoenicopterus roseus</i></p>
+      <h2>Eats upside down, so its face was rebuilt to match</h2>
+    </div>
+    <figure class="plate__fig">
+      <svg id="flam-svg" viewBox="0 0 480 360" role="img" aria-label="A flamingo's head and neck. The upper bill is a thin lid and the lower bill is deep.">
+        <path d="M268 150 C350 170 350 280 270 290 C200 300 200 380 250 420" stroke="var(--flam)" stroke-width="30" stroke-linecap="round" fill="none"/>
+        <path d="M222 104 L176 100 Q132 100 122 150 L116 200 L140 204 Q176 192 192 162 L224 144Z" fill="var(--flam-bill)"/>
+        <path d="M121 160 L116 200 L140 204 Q155 200 166 190Z" fill="var(--pink-fg)"/>
+        <path d="M222 116 L176 113 Q142 114 134 152 L126 196" stroke="var(--pink-fg)" stroke-width="2.5" fill="none"/>
+        <circle cx="250" cy="130" r="38" fill="var(--flam)"/>
+        <circle cx="238" cy="120" r="6.5" fill="var(--flam-bill)"/><circle cx="238" cy="120" r="2.8" fill="var(--pink-fg)"/>
+      </svg>
+      <button class="btn" id="flam-btn" type="button" aria-pressed="false">Turn it over to feed</button>
+      <p class="cap" id="flam-cap" aria-live="polite">Standing: a thin lid on top and a deep trough below. Backwards for a bird.</p>
+    </figure>
+    <div class="plate__body">
+      <p>A flamingo feeds with its head upside down, bill pointing back toward its feet, sieving shrimp and algae out of the mud. It has done this for so long that its jaws have traded places.</p>
+      <p>In nearly every other bird the upper bill is the big half and the lower jaw is the small one that moves. In a flamingo the upper bill is a thin lid and the lower is a deep trough. Stand the bird upright and its bill looks as if it was fitted the wrong way up. Turn the head over, the way the flamingo actually uses it, and everything is where you'd expect: big half on top, small half working below.</p>
+      <aside class="tell">
+        <h3>The giveaway</h3>
+        <p>The tongue is the pump. It drives water through the bill's comb-like filters several times a second. Roman emperors served it as a delicacy.</p>
+      </aside>
+      <p class="src">Gould, “The Flamingo's Smile”, in <i>The Flamingo's Smile</i> (1985)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KIWI ================= -->
+<section class="plate" id="kiwi">
+  <div class="plate__in">
+    <div class="plate__head">
+      <p class="tag">North Island brown kiwi <i>Apteryx mantelli</i></p>
+      <h2>A chicken-sized bird with an egg six times too big</h2>
+    </div>
+    <figure class="plate__fig">
+      <svg viewBox="0 0 480 340" role="img" aria-label="A kiwi seen from the side with the outline of an egg that fills most of its body.">
+        <g stroke="var(--egg)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M242 262 L234 318 M234 318 L210 326 M234 318 L224 332 M234 318 L250 328"/>
+          <path d="M312 258 L320 318 M320 318 L296 326 M320 318 L312 332 M320 318 L338 326"/>
+        </g>
+        <ellipse cx="270" cy="165" rx="135" ry="108" fill="var(--kiwi)"/>
+        <path d="M112 108 L128 136 L22 232Z" fill="var(--egg)"/>
+        <circle cx="140" cy="112" r="42" fill="var(--kiwi)"/>
+        <ellipse cx="282" cy="172" rx="96" ry="72" transform="rotate(-12 282 172)" fill="var(--egg)" stroke="var(--forest-bg)" stroke-width="2.5" stroke-dasharray="6 6"/>
+        <circle cx="128" cy="100" r="4.5" fill="var(--forest-bg)"/>
+      </svg>
+      <figcaption>Share of the mother's body weight</figcaption>
+      <ul class="bars">
+        <li><span>Chicken egg</span><span class="track"><span class="fill" style="--n:.15"></span>about 3%</span></li>
+        <li><span>Human baby</span><span class="track"><span class="fill" style="--n:.25"></span>about 5%</span></li>
+        <li class="hot"><span>Kiwi egg</span><span class="track"><span class="fill" style="--n:1"></span>up to 20%</span></li>
+      </ul>
+    </figure>
+    <div class="plate__body">
+      <p>A kiwi is about the size of a chicken. Its egg weighs close to half a kilo, around six times what a bird that size should lay, and can make up a fifth of the mother's weight. In the last days before laying there is almost no room left inside her for food.</p>
+      <p>Gould's explanation was that the kiwi is a shrunken giant. Its ancestors were big birds like the moa, he argued, and as the body shrank over the generations the egg shrank more slowly. The bird got smaller and the egg never caught up.</p>
+      <p>DNA has since complicated things. A 2014 study found the kiwi's closest relatives were the elephant birds of Madagascar, and that its ancestors probably flew to New Zealand, so they may never have been giants at all. The question is open again. The egg is still enormous.</p>
+      <aside class="tell">
+        <h3>The giveaway</h3>
+        <p>The chick hatches fully feathered with its eyes open, carrying enough yolk in its belly to skip its first days of meals. Its parents never feed it.</p>
+      </aside>
+      <p class="src">Gould, “Of Kiwi Eggs and the Liberty Bell”, in <i>Bully for Brontosaurus</i> (1991)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GIRAFFE ================= -->
+<section class="plate plate--flip" id="giraffe">
+  <div class="plate__in">
+    <div class="plate__head">
+      <p class="tag">Giraffe <i>Giraffa camelopardalis</i></p>
+      <h2>The nerve that takes a four-metre detour</h2>
+    </div>
+    <figure class="plate__fig">
+      <svg viewBox="110 0 360 560" role="img" aria-label="A giraffe's head, neck and chest. A red nerve runs from the brain down the whole neck, loops under the aorta beside the heart, and climbs back up to the voice box just below the head.">
+        <ellipse cx="300" cy="560" rx="160" ry="90" fill="var(--giraffe)"/>
+        <path d="M250 500 L350 500 L322 130 L282 130Z" fill="var(--giraffe)"/>
+        <g fill="var(--giraffe-spot)" opacity=".55">
+          <rect x="298" y="190" width="20" height="24" rx="7"/><rect x="278" y="226" width="22" height="28" rx="8"/><rect x="310" y="262" width="18" height="26" rx="7"/><rect x="274" y="300" width="22" height="30" rx="8"/><rect x="306" y="336" width="24" height="28" rx="8"/><rect x="268" y="376" width="24" height="30" rx="8"/><rect x="308" y="408" width="26" height="30" rx="8"/><rect x="262" y="444" width="26" height="28" rx="8"/>
+        </g>
+        <path d="M296 92 L290 58 M314 86 L312 52" stroke="var(--giraffe)" stroke-width="8" stroke-linecap="round"/>
+        <circle cx="290" cy="56" r="6.5" fill="var(--giraffe-spot)"/><circle cx="312" cy="50" r="6.5" fill="var(--giraffe-spot)"/>
+        <ellipse cx="274" cy="98" rx="19" ry="8" transform="rotate(-25 274 98)" fill="var(--giraffe)"/>
+        <ellipse cx="335" cy="108" rx="54" ry="27" transform="rotate(20 335 108)" fill="var(--giraffe)"/>
+        <circle cx="345" cy="100" r="4" fill="var(--sky-fg)"/><circle cx="378" cy="124" r="2.5" fill="var(--giraffe-spot)"/>
+        <!-- heart and aorta -->
+        <path d="M300 492 V514" stroke="var(--heart)" stroke-width="6"/>
+        <circle cx="300" cy="482" r="10" fill="var(--giraffe)" stroke="var(--heart)" stroke-width="6"/>
+        <path d="M300 542 L282 521 A10.6 10.6 0 0 1 300 510 A10.6 10.6 0 0 1 318 521Z" fill="var(--heart)"/>
+        <!-- the short way -->
+        <path d="M316 100 L291 166" stroke="var(--sky-fg)" stroke-width="2" stroke-dasharray="3 5" fill="none"/>
+        <!-- the nerve -->
+        <path id="nerve" d="M318 100 C326 124 318 140 318 160 L318 478 C318 504 282 504 282 478 L289 172" stroke="var(--nerve)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path class="pulse" pathLength="1000" d="M318 100 C326 124 318 140 318 160 L318 478 C318 504 282 504 282 478 L289 172" stroke="var(--spark)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        <circle cx="318" cy="100" r="7" fill="var(--spark)" stroke="var(--nerve)" stroke-width="3"/>
+        <circle cx="290" cy="168" r="7" fill="var(--spark)" stroke="var(--nerve)" stroke-width="3"/>
+        <!-- labels -->
+        <g stroke="var(--sky-fg)" stroke-width="1.5" fill="none">
+          <path d="M376 50 L325 94"/><path d="M242 166 L281 167"/><path d="M242 126 L302 134"/><path d="M242 478 L286 481"/>
+        </g>
+        <text class="g-label" x="380" y="46">brain</text>
+        <text class="g-label" x="236" y="131" text-anchor="end">the short way</text>
+        <text class="g-label" x="236" y="171" text-anchor="end">voice box</text>
+        <text class="g-label" x="356" y="316">all the way</text>
+        <text class="g-label" x="356" y="336">down</text>
+        <text class="g-label" x="246" y="316" text-anchor="end">and all the</text>
+        <text class="g-label" x="246" y="336" text-anchor="end">way back</text>
+        <text class="g-label" x="236" y="483" text-anchor="end">aorta</text>
+      </svg>
+    </figure>
+    <div class="plate__body">
+      <p>The nerve that works a giraffe's voice box leaves the brain a short distance from where it needs to go. It doesn't go there. It runs all the way down the neck into the chest, loops under a main artery beside the heart, and climbs all the way back up. In a tall giraffe that is a round trip of more than four metres.</p>
+      <p>The route made sense in fish. They have no neck, and the nerve ran straight past the heart to the gills. Then necks evolved and the heart settled deep in the chest, with the nerve still hooked underneath that artery. Each generation could stretch the nerve a little further. None could unhook it.</p>
+      <aside class="tell">
+        <h3>The giveaway</h3>
+        <p>You have the same loop in a shorter edition. The long-necked sauropod dinosaurs had it far worse: by one estimate, about 28 metres of nerve.</p>
+      </aside>
+      <p class="src">Richard Dawkins, <i>The Greatest Show on Earth</i> (2009)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ANGLERFISH ================= -->
+<section class="plate" id="anglerfish">
+  <div class="plate__in">
+    <div class="plate__head">
+      <p class="tag">Deep-sea anglerfish <i>suborder Ceratioidei</i></p>
+      <h2>The husband who became an organ</h2>
+    </div>
+    <figure class="plate__fig">
+      <svg viewBox="0 0 480 350" role="img" aria-label="A large female anglerfish with a glowing lure. A tiny male, ringed in yellow, is attached to her belly.">
+        <circle cx="96" cy="96" r="52" fill="var(--lure)" opacity=".1"/><circle cx="96" cy="96" r="30" fill="var(--lure)" opacity=".2"/>
+        <path d="M236 102 C222 36 130 28 98 90" stroke="var(--angler-edge)" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <circle cx="96" cy="96" r="11" fill="var(--lure)"/>
+        <path d="M372 192 L444 138 L430 192 L444 248Z" fill="var(--angler)" stroke="var(--angler-edge)" stroke-width="2"/>
+        <ellipse cx="270" cy="195" rx="118" ry="100" fill="var(--angler)" stroke="var(--angler-edge)" stroke-width="2"/>
+        <path d="M158 158 L258 205 L168 270 Q140 215 158 158Z" fill="var(--abyss-bg)"/>
+        <path d="M166 162 L178 167 L168 188Z M180 168 L192 174 L183 196Z M194 175 L206 181 L198 200Z M208 182 L220 187 L213 203Z M175 265 L186 257 L174 238Z M188 256 L199 248 L188 228Z M201 246 L212 238 L203 220Z M214 236 L225 229 L217 214Z" fill="var(--abyss-fg)"/>
+        <ellipse cx="318" cy="214" rx="26" ry="12" transform="rotate(28 318 214)" fill="var(--angler-edge)"/>
+        <circle cx="252" cy="150" r="9" fill="var(--abyss-fg)"/><circle cx="250" cy="150" r="4" fill="var(--abyss-bg)"/>
+        <ellipse cx="300" cy="303" rx="6" ry="12" fill="var(--male)"/><path d="M295 313 L305 313 L300 325Z" fill="var(--male)"/>
+        <circle cx="300" cy="308" r="24" fill="none" stroke="var(--lure)" stroke-width="2.5" stroke-dasharray="5 6"/>
+      </svg>
+      <figcaption>Ringed in yellow: the male, drawn roughly to scale.</figcaption>
+    </figure>
+    <div class="plate__body">
+      <p>A kilometre or two down, in permanent darkness, finding a mate is close to impossible. Some deep-sea anglerfish solved the problem by making sure that a male who finds a female never leaves.</p>
+      <p>The male is tiny, in some species under a centimetre long, with oversized nostrils for following her scent. When he finds her he bites her side and holds on. His mouth fuses with her skin and their bloodstreams join. His eyes and most of his organs waste away until he is little more than a pair of testes attached to her body, fed by her blood. A female can carry several.</p>
+      <p>The biologist who first described a female with males attached took the little lumps for her babies.</p>
+      <aside class="tell">
+        <h3>The giveaway</h3>
+        <p>To make the merger work, these species have thrown out parts of their own immune system: the parts that would reject a transplant.</p>
+      </aside>
+      <p class="src">Gould, “Big Fish, Little Fish”, in <i>Hen's Teeth and Horse's Toes</i> (1983)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FLATFISH ================= -->
+<section class="plate plate--flip" id="flatfish">
+  <div class="plate__in">
+    <div class="plate__head">
+      <p class="tag">European plaice <i>Pleuronectes platessa</i></p>
+      <h2>Lay down on its side, then had to move an eye</h2>
+    </div>
+    <figure class="plate__fig">
+      <svg viewBox="0 0 480 320" role="img" aria-label="A fish seen head-on. Dragging the slider tips it onto its side while one eye travels over the top of the head to join the other.">
+        <rect x="0" y="274" width="480" height="46" fill="var(--seabed)"/>
+        <g fill="var(--plaice-fin)" opacity=".45"><circle cx="60" cy="292" r="3"/><circle cx="130" cy="304" r="2.5"/><circle cx="350" cy="290" r="3"/><circle cx="420" cy="306" r="2.5"/><circle cx="250" cy="300" r="2"/></g>
+        <g id="flat-fish" transform="translate(240 156) rotate(6.7)">
+          <path d="M-11 -86 L0 -114 L11 -86Z M-9 86 L0 110 L9 86Z" fill="var(--plaice-fin)"/>
+          <ellipse cx="0" cy="0" rx="42" ry="92" fill="var(--plaice)"/>
+          <ellipse cx="0" cy="24" rx="10" ry="5.5" fill="var(--sand-fg)"/>
+          <g transform="translate(-39.5 -31.5)"><circle r="12" fill="var(--eye-white)"/><circle r="5.5" fill="var(--sand-fg)"/></g>
+          <g id="flat-eye" transform="translate(0 -92)"><circle r="12" fill="var(--eye-white)"/><circle r="5.5" fill="var(--sand-fg)"/></g>
+        </g>
+      </svg>
+      <label class="slide" for="flat-age"><span>hatchling</span><input type="range" id="flat-age" min="0" max="100" value="50" aria-describedby="flat-cap"><span>adult</span></label>
+      <p class="cap" id="flat-cap" aria-live="polite">A few weeks old: one eye is crossing the top of the head.</p>
+    </figure>
+    <div class="plate__body">
+      <p>A baby plaice looks like any other fish: upright, symmetrical, one eye on each side. A few weeks in, its left eye starts to drift. It travels up over the top of the head and settles beside the right one, and the skull twists to make room. Then the fish lies down on its blind side and stays there for life.</p>
+      <p>Rays flattened the sensible way, belly down. The ancestors of flatfish were tall, narrow fish that could only lie flat by tipping over, which left one eye staring into the sand. Evolution moved the eye and kept the rest of the fish.</p>
+      <aside class="tell">
+        <h3>The giveaway</h3>
+        <p>Fossils about 50 million years old show the halfway stage: adult fish with one eye stranded near the top of the head, not yet across.</p>
+      </aside>
+      <p class="src">Matt Friedman, “The evolutionary origin of flatfish asymmetry”, <i>Nature</i> (2008)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CRAB ================= -->
+<section class="plate" id="crab">
+  <div class="plate__in">
+    <div class="plate__head">
+      <p class="tag">Red king crab <i>Paralithodes camtschaticus</i></p>
+      <h2>Evolution keeps inventing the crab</h2>
+    </div>
+    <figure class="plate__fig">
+      <svg viewBox="0 0 480 350" role="img" aria-label="Five long-bodied crustaceans at the top, each with a dashed line leading down to a single crab.">
+        <g fill="var(--crab-shade)">
+          <ellipse cx="44" cy="40" rx="9" ry="20" transform="rotate(-35 44 40)"/><ellipse cx="140" cy="24" rx="9" ry="20" transform="rotate(-18 140 24)"/><ellipse cx="240" cy="20" rx="9" ry="20"/><ellipse cx="340" cy="24" rx="9" ry="20" transform="rotate(18 340 24)"/><ellipse cx="436" cy="40" rx="9" ry="20" transform="rotate(35 436 40)"/>
+        </g>
+        <g stroke="var(--red-fg)" stroke-width="2.5" stroke-dasharray="4 7" stroke-linecap="round" fill="none">
+          <path d="M56 58 C120 110 200 110 240 138"/><path d="M146 46 C170 96 216 108 240 138"/><path d="M240 44 V138"/><path d="M334 46 C310 96 264 108 240 138"/><path d="M424 58 C360 110 280 110 240 138"/>
+        </g>
+        <path d="M230 140 L240 158 L250 140Z" fill="var(--red-fg)"/>
+        <g stroke="var(--crab)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M178 244 L132 224 L106 258 M174 258 L124 250 L98 290 M178 272 L130 278 L108 316 M190 284 L150 302 L136 334"/>
+          <path d="M302 244 L348 224 L374 258 M306 258 L356 250 L382 290 M302 272 L350 278 L372 316 M290 284 L330 302 L344 334"/>
+          <path d="M194 222 L152 196 L166 168 M286 222 L328 196 L314 168" stroke-width="12"/>
+          <path d="M226 212 L222 190 M254 212 L258 190" stroke-width="4"/>
+        </g>
+        <ellipse cx="168" cy="152" rx="19" ry="24" fill="var(--crab)"/><path d="M168 154 L172 124 L190 136Z" fill="var(--red-bg)"/>
+        <ellipse cx="312" cy="152" rx="19" ry="24" fill="var(--crab)"/><path d="M312 154 L308 124 L290 136Z" fill="var(--red-bg)"/>
+        <ellipse cx="240" cy="254" rx="80" ry="50" fill="var(--crab)"/>
+        <path d="M204 262 Q240 284 276 262" stroke="var(--crab-shade)" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <circle cx="222" cy="186" r="7" fill="var(--red-fg)"/><circle cx="258" cy="186" r="7" fill="var(--red-fg)"/>
+        <circle cx="222" cy="186" r="3" fill="var(--red-deep)"/><circle cx="258" cy="186" r="3" fill="var(--red-deep)"/>
+      </svg>
+      <figcaption>Five separate lineages, one outcome:</figcaption>
+      <ul class="five"><li>true crabs</li><li>king crabs</li><li>porcelain crabs</li><li>hairy stone crab</li><li>coconut crab</li></ul>
+    </figure>
+    <div class="plate__body">
+      <p>A wide, flat shell. A tail tucked away underneath. Legs out to the sides. This body has evolved from scratch at least five separate times, in crustaceans that started out shaped more like lobsters or hermit crabs. Biologists have a word for it: carcinisation, the process of becoming a crab.</p>
+      <p>So a king crab is no true crab. It descends from hermit crabs that gave up their borrowed shells and grew armour of their own. Nobody is sure why the crab shape is such a reliable destination, and a few lineages have since evolved back out of it.</p>
+      <aside class="tell">
+        <h3>The giveaway</h3>
+        <p>Count the walking legs. True crabs show four pairs. King crabs show three, because the fourth pair is tiny and folded away inside the shell, where it cleans the gills.</p>
+      </aside>
+      <p class="src">Keiler, Wirkner &amp; Richter, “One hundred years of carcinization”, <i>Biological Journal of the Linnean Society</i> (2017)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= YOU ================= -->
+<section class="you" id="you">
+  <div class="wrap">
+    <header>
+      <p class="tag">Human <i>Homo sapiens</i></p>
+      <h2>And then there's you</h2>
+      <p>You are a rebuilt fish as well, and the alterations show. Six places to look.</p>
+    </header>
+    <ul class="faults">
+      <li>
+        <h3>A hole in your vision</h3>
+        <p>Your retina is installed backwards. Its wiring runs across the front of the light sensors and leaves through a hole, where you see nothing. Octopus eyes evolved separately, with the wiring behind, and have no blind spot.</p>
+        <div class="blind" aria-hidden="true"><span>+</span><i></i></div>
+        <p class="cap">Cover your left eye. Stare at the cross and move slowly toward the screen. The dot will vanish.</p>
+      </li>
+      <li>
+        <h3>Hiccups</h3>
+        <p>One hypothesis traces them to tadpoles, which gulp water over their gills with the same sharp intake and snap of the throat. The nerve that triggers the spasm also takes a long, exposed route down from the neck, a leftover from when the diaphragm's ancestors sat near the gills.</p>
+      </li>
+      <li>
+        <h3>Goosebumps</h3>
+        <p>When you are cold or frightened, a tiny muscle pulls each hair upright. This fluffs up a fur coat you no longer own.</p>
+      </li>
+      <li>
+        <h3>A tailbone</h3>
+        <p>At about five weeks, every human embryo has a tail. Over the next few weeks it is absorbed again, leaving a few fused bones at the base of the spine that you only notice when you fall on them.</p>
+      </li>
+      <li>
+        <h3>Nipples on men</h3>
+        <p>Embryos lay down nipples before the differences between the sexes switch on. Gould used them to argue that not every body part needs a purpose. Some are simply the cost of building two sexes from one plan.</p>
+      </li>
+      <li>
+        <h3>Choking</h3>
+        <p>Lungs began as a pouch off the gut of a fish, so your air and your food still share a crossing in the throat. Every swallow is a small act of traffic control.</p>
+      </li>
+    </ul>
+    <p class="src">Gould, “Male Nipples and Clitoral Ripples”, in <i>Bully for Brontosaurus</i> (1991). The hiccup hypothesis is told in Neil Shubin, <i>Your Inner Fish</i> (2008)</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="fin">
+  <div class="wrap">
+    <blockquote>
+      <p>Odd arrangements and funny solutions are the proof of evolution</p>
+      <footer class="mono">Stephen Jay Gould, The Panda's Thumb, 1980</footer>
+    </blockquote>
+    <p class="after">A perfect body tells you nothing about where it came from. A thumb made from a wrist, a tail that gallops and an egg that barely fits each carry a record of what the animal used to be. That was Gould's argument, made month after month in his <i>Natural History</i> column from 1974 to 2001 without missing an issue.</p>
+    <div class="shelf">
+      <p class="mono">Read the originals</p>
+      <ul>
+        <li><span><b>The Panda's Thumb</b><small>1980</small></span><span>“The Panda's Thumb”</span></li>
+        <li><span><b>Hen's Teeth and Horse's Toes</b><small>1983</small></span><span>“Big Fish, Little Fish” and the title essay</span></li>
+        <li><span><b>The Flamingo's Smile</b><small>1985</small></span><span>“The Flamingo's Smile”</span></li>
+        <li><span><b>Bully for Brontosaurus</b><small>1991</small></span><span>“Of Kiwi Eggs and the Liberty Bell” and “Male Nipples and Clitoral Ripples”</span></li>
+        <li><span><b>Dinosaur in a Haystack</b><small>1995</small></span><span>“Hooking Leviathan by Its Past”</span></li>
+      </ul>
+    </div>
+    <p class="note">Mya = million years ago. Dates and sizes are rounded. The drawings are cartoons that show the idea, not anatomical plates.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Flamingo: turn the whole head over.
+  var btn=document.getElementById('flam-btn'), svg=document.getElementById('flam-svg'), cap=document.getElementById('flam-cap');
+  if(btn&&svg&&cap){
+    btn.addEventListener('click',function(){
+      var on=svg.classList.toggle('is-flipped');
+      btn.setAttribute('aria-pressed',on?'true':'false');
+      btn.textContent=on?'Stand it back up':'Turn it over to feed';
+      cap.textContent=on
+        ?'Feeding: the deep half is now on top and the thin half works below, like any other beak.'
+        :'Standing: a thin lid on top and a deep trough below. Backwards for a bird.';
+    });
+  }
+  // Flatfish: one eye migrates over the head, then the fish tips onto its side.
+  var age=document.getElementById('flat-age'), fish=document.getElementById('flat-fish'), eye=document.getElementById('flat-eye'), fcap=document.getElementById('flat-cap');
+  function ease(t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)}
+  function draw(){
+    var p=age.value/100, m=ease((p-.08)/.7), t=ease((p-.4)/.6);
+    var th=(20+108*m)*Math.PI/180;
+    eye.setAttribute('transform','translate('+(42*Math.cos(th)).toFixed(1)+' '+(-92*Math.sin(th)).toFixed(1)+')');
+    fish.setAttribute('transform','translate(240 '+(150+82*t).toFixed(1)+') rotate('+(90*t).toFixed(1)+')');
+    fcap.textContent = p<.12 ? 'Hatchling: upright, with an eye on each side, like any fish.'
+      : p<.38 ? 'The left eye begins to drift upward.'
+      : p<.62 ? 'A few weeks old: one eye is crossing the top of the head.'
+      : p<.9 ? 'Both eyes on one side now. The fish starts to tip over.'
+      : 'Adult: flat on the seabed, both eyes looking up.';
+  }
+  if(age&&fish&&eye&&fcap){age.addEventListener('input',draw);draw();}
+
+  // Progress rail: shows where you are, and a "next" link closes each plate.
+  var rail=document.getElementById('rail'), list=document.getElementById('rail-list'), bar=document.getElementById('rail-bar'), hero=document.querySelector('.hero');
+  var calm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(rail&&list&&bar&&hero){
+    var links=[].slice.call(list.querySelectorAll('a'));
+    var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))});
+    secs.forEach(function(s,i){
+      var body=s&&s.querySelector('.plate__body'), nx=links[i+1];
+      if(!body||!nx)return;
+      var a=document.createElement('a');
+      a.className='next';a.href=nx.getAttribute('href');a.textContent='Next: '+nx.textContent+' ↓';
+      body.appendChild(a);
+    });
+    var cur=-2, queued=false;
+    function place(){
+      queued=false;
+      var doc=document.documentElement, y=window.scrollY||doc.scrollTop||0, vh=window.innerHeight, max=doc.scrollHeight-vh;
+      bar.style.transform='scaleX('+(max>0?Math.max(0,Math.min(1,y/max)):0).toFixed(4)+')';
+      rail.classList.toggle('is-on', y>hero.offsetHeight-80);
+      var idx=-1;
+      for(var i=0;i<secs.length;i++){ if(secs[i]&&secs[i].getBoundingClientRect().top<=vh*0.4) idx=i; }
+      if(idx===cur)return;
+      cur=idx;
+      links.forEach(function(a,i){ if(i===idx)a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); });
+      if(idx>=0){
+        var a=links[idx], left=a.offsetLeft-(list.clientWidth-a.offsetWidth)/2;
+        if(list.scrollTo) list.scrollTo({left:left,behavior:calm?'auto':'smooth'}); else list.scrollLeft=left;
+      }
+    }
+    function ask(){ if(!queued){queued=true;requestAnimationFrame(place);} }
+    window.addEventListener('scroll',ask,{passive:true});
+    window.addEventListener('resize',ask);
+    place();
+  }
+
+  // Diagrams settle into place as each plate arrives. They stay visible throughout.
+  if(!calm&&'IntersectionObserver' in window){
+    var figs=[].slice.call(document.querySelectorAll('.plate__fig'));
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);} });
+    },{threshold:.12});
+    document.documentElement.classList.add('js-reveal');
+    figs.forEach(function(f){io.observe(f)});
+  }
+})();
+</script>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Link preview card</title>
+<!-- Rendered to og.png and og-nl.png (1200x630) with headless Chrome; see README. Add ?lang=nl for Dutch. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Caveat:wght@700&family=DM+Mono:wght@400;500&family=Literata:opsz,wght@7..72,400..600&display=swap">
+<style>
+html,body{margin:0;width:1200px;height:630px;overflow:hidden}
+body{background:#E9EEE4;color:#16233B;display:flex;flex-direction:column;justify-content:space-between}
+.pad{padding:58px 72px 0}
+.k{font:500 22px "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#55627A}
+h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-stretch:75%;font-size:128px;line-height:.92;letter-spacing:-.03em;margin:30px 0 0}
+h1.nl{font-size:106px}
+h1 span{display:block}
+del{text-decoration:none;position:relative;display:inline-block}
+del::after{content:"";position:absolute;left:-4%;right:-4%;top:54%;height:.085em;border-radius:.05em;background:#D8392B;transform:rotate(-3deg)}
+ins{text-decoration:none;display:inline-block;font-family:"Caveat",cursive;font-weight:700;font-stretch:100%;letter-spacing:0;color:#D8392B;font-size:1.02em;line-height:.8;margin-left:.12em;transform:rotate(-4deg)}
+.sub{font:400 34px/1.35 "Literata",serif;margin:34px 0 0;max-width:940px}
+.bar{display:flex;height:60px}
+.bar i{flex:1}
+</style>
+</head>
+<body>
+<div class="pad">
+  <div class="k" id="k">Ten animals, fixed with whatever was lying around</div>
+  <h1 id="h"><span id="a">Nature's finest</span><del id="b">designs</del> <ins id="c">workarounds</ins></h1>
+  <p class="sub" id="s">Why dolphins went back to the sea, pandas have a fake thumb and kiwis lay giant eggs.</p>
+</div>
+<div class="bar">
+  <i style="background:#17607A"></i><i style="background:#CFE0A8"></i><i style="background:#4B2E5E"></i><i style="background:#FAD4D8"></i><i style="background:#1F4A3A"></i><i style="background:#BFE0EE"></i><i style="background:#0A0F24"></i><i style="background:#E3D2A2"></i><i style="background:#C8402F"></i><i style="background:#16233B"></i>
+</div>
+<script>
+if (/lang=nl/.test(location.search)) {
+  document.documentElement.lang = "nl";
+  document.getElementById("h").className = "nl";
+  document.getElementById("k").textContent = "Tien dieren, opgelapt met wat er voorhanden was";
+  document.getElementById("a").textContent = "De fraaiste";
+  document.getElementById("b").textContent = "ontwerpen";
+  document.getElementById("c").textContent = "noodoplossingen";
+  document.getElementById("s").textContent = "Waarom dolfijnen terugkeerden naar zee, panda's een nepduim hebben en kiwi's reuzeneieren leggen.";
+}
+</script>
+</body>
+</html>
