@@ -125,6 +125,7 @@ def seo(lang):
         '<meta name="twitter:title" content="%s">' % e(m["title"]),
         '<meta name="twitter:description" content="%s">' % e(m["desc"]),
         '<meta name="twitter:image" content="%s">' % m["image"],
+        '<meta name="google-site-verification" content="vvnTfavHYszdzstcURbWgC-BSp-oZDf7bgH32fe8dt0">',
         '<meta name="theme-color" content="#17607A">',
         '<link rel="icon" type="image/svg+xml" href="%sfavicon.svg">' % SITE,
         '<link rel="preconnect" href="https://fonts.googleapis.com">',
