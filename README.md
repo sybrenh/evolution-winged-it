@@ -1,5 +1,7 @@
 # Nature's Workarounds
 
+Live at https://sybrenh.github.io/evolution-winged-it/
+
 A one-page picture book about the funny ways evolution shaped certain animals:
 the dolphin that went back to sea, the panda's false thumb, the kiwi's oversized
 egg, and seven more. Several stories come from Stephen Jay Gould's essays.

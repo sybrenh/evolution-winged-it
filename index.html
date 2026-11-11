@@ -13,7 +13,7 @@
   /* frame */
   --paper:#E9EEE4; --ink:#16233B; --muted:#55627A; --pen:#D8392B; --line:#16233B33;
   /* plates: fixed posters, each with its own ground and ink */
-  --sea-bg:#17607A; --sea-fg:#F2F5EC; --sea-wet:#8AD3E2; --sea-dry:#F4C95D; --sea-deep:#0F4A60; --sea-skin:#C9DEE3; --sea-fin:#9DBEC8;
+  --sea-bg:#17607A; --sea-fg:#F2F5EC; --sea-wet:#8AD3E2; --sea-dry:#F4C95D; --sea-deep:#0F4A60; --sea-skin:#C9DEE3; --sea-fin:#9DBEC8; --sea-fur:#C07A3E;
   --bamboo-bg:#CFE0A8; --bamboo-fg:#16233B; --bamboo-stalk:#4E8B3A; --bamboo-node:#356626; --panda-k:#1D1D22; --panda-pad:#6B5A60; --panda-claw:#F7F4E8;
   --plum-bg:#4B2E5E; --plum-fg:#F6EFE4; --hen-white:#FFF8EA; --hen-red:#F0503A; --hen-beak:#F2A93B; --plum-soft:#8E6FA6;
   --pink-bg:#FAD4D8; --pink-fg:#3A1230; --flam:#EF5B7F; --flam-bill:#FFF3E2;
@@ -110,10 +110,15 @@ figcaption,.cap{font-family:var(--mono);font-size:.8rem;line-height:1.5}
 #crab{--bg:var(--red-bg);--fg:var(--red-fg)}
 
 /* dolphin: the trek */
-.trek li{display:grid;grid-template-columns:5.6rem minmax(0,1fr);gap:.9rem;padding:.65rem 0 .65rem 1rem;border-left:6px solid var(--rail);font-size:.98rem;line-height:1.45}
-.trek .wet{--rail:var(--sea-wet)} .trek .dry{--rail:var(--sea-dry)}
-.trek .when{font-family:var(--mono);font-size:.85rem;display:grid;align-content:start}
-.trek .when small{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--rail)}
+.trek{border:2px solid var(--sea-deep);border-radius:10px;overflow:hidden}
+.trek li{display:grid;grid-template-columns:clamp(7.5rem,42%,12.5rem) minmax(0,1fr);font-size:.95rem;line-height:1.4}
+.trek li+li{border-top:2px solid var(--sea-bg)}
+.trek__pic{background:var(--sea-deep);display:flex;align-items:flex-end}
+.trek__txt{padding:.7rem .9rem;display:grid;gap:.25rem;align-content:center}
+.trek .when{font-family:var(--mono);font-size:.82rem}
+.trek .when small{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--sea-dry);margin-left:.6em}
+.trek__n{font-family:var(--mono);font-size:11px;font-weight:500;fill:var(--sea-deep)}
+@media (max-width:30rem){.trek li{grid-template-columns:minmax(0,1fr)}}
 
 /* flamingo */
 #flam-svg{transition:transform .7s cubic-bezier(.5,0,.2,1)}
@@ -230,26 +235,29 @@ blockquote p::after{content:"\201D";color:var(--pen)}
       <h2>Left the sea, grew legs, changed its mind</h2>
     </div>
     <figure class="plate__fig">
-      <svg viewBox="0 0 480 230" role="img" aria-label="A dolphin diving back into the sea. Arrows beside its tail point up and down.">
-        <circle cx="432" cy="40" r="24" fill="var(--sea-dry)"/>
-        <g transform="translate(96 66) scale(1.2) rotate(-16 125 60)">
-          <path d="M118 36 C126 18 140 10 150 10 C143 22 143 30 148 38 Z" fill="var(--sea-fin)"/>
-          <path d="M18 66 L40 60 C48 44 80 34 110 34 C150 34 185 48 212 62 L232 46 L226 66 L234 84 L210 70 C180 84 140 90 100 88 C70 86 50 80 40 72 Z" fill="var(--sea-skin)"/>
-          <path d="M88 84 C92 98 102 106 112 108 C108 98 106 90 104 86 Z" fill="var(--sea-fin)"/>
-          <circle cx="56" cy="60" r="2.6" fill="var(--sea-deep)"/>
-        </g>
-        <path d="M392 76 V126" stroke="var(--sea-dry)" stroke-width="4" stroke-linecap="round" fill="none"/>
-        <path d="M384 80 L392 66 L400 80 Z M384 122 L392 136 L400 122 Z" fill="var(--sea-dry)"/>
-        <circle cx="150" cy="158" r="5" fill="var(--sea-wet)"/><circle cx="196" cy="150" r="3.5" fill="var(--sea-wet)"/><circle cx="128" cy="140" r="3" fill="var(--sea-wet)"/>
-        <path d="M0 186 q20 -16 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 V230 H0Z" fill="var(--sea-deep)"/>
-      </svg>
       <ol class="trek">
-        <li class="wet"><span class="when">375 Mya<small>leaving the sea</small></span><span>Fish like <b>Tiktaalik</b>, with wrists inside their fins, prop themselves up in the shallows. Their kin walk away.</span></li>
-        <li class="dry"><span class="when">50 Mya<small>on land</small></span><span><b>Pakicetus</b>, a wolf-sized hoofed mammal, hunts along riverbanks in what is now Pakistan.</span></li>
-        <li class="wet"><span class="when">49 Mya<small>wading back</small></span><span><b>Ambulocetus</b>, whose name means walking whale, paddles on big feet and probably ambushes prey like a crocodile.</span></li>
-        <li class="wet"><span class="when">40 Mya<small>at sea</small></span><span><b>Basilosaurus</b> is up to 18 metres long and never leaves the water. It still has tiny hind legs, knees and toes included.</span></li>
-        <li class="wet"><span class="when">Today<small>at sea</small></span><span><b>Dolphins.</b> The hind legs are gone, apart from limb buds that appear in the embryo and then fade.</span></li>
+        <li>
+          <div class="trek__pic"><svg viewBox="0 0 200 110" role="img" aria-label="A flat-headed fish in shallow water, propped on a sandy slope with its eyes above the surface."><rect width="200" height="110" fill="var(--sea-deep)"/><path d="M96 110 C140 100 172 78 200 44 V110Z" fill="var(--sea-dry)"/><path d="M38 70 L20 60 L25 74 L20 88 L38 79 C70 88 112 88 142 82 L168 75 L172 69 L166 64 L142 62 C112 58 70 62 38 70Z" fill="var(--sea-skin)"/><path d="M132 82 L143 93 L151 90 M72 84 L66 94" stroke="var(--sea-fin)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="151" cy="62" r="4.5" fill="var(--sea-skin)"/><circle cx="152" cy="61.5" r="1.9" fill="var(--sea-deep)"/><path d="M0 66 q12.5 -7 25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 V110 H0Z" fill="var(--sea-wet)" opacity=".3"/><circle cx="15" cy="15" r="9.5" fill="var(--sea-fg)" stroke="var(--sea-deep)" stroke-width="1.5"/><text class="trek__n" x="15" y="19" text-anchor="middle">1</text></svg></div>
+          <div class="trek__txt"><span class="when">375 Mya<small>leaving the sea</small></span><span>Fish like <b>Tiktaalik</b>, with wrists inside their fins, prop themselves up in the shallows. Their kin walk away.</span></div>
+        </li>
+        <li>
+          <div class="trek__pic"><svg viewBox="0 0 200 110" role="img" aria-label="A four-legged, long-snouted mammal with a long tail standing on a riverbank."><rect width="200" height="110" fill="var(--sea-deep)"/><path d="M0 80 H200 V110 H0Z" fill="var(--sea-dry)"/><path d="M146 110 C160 94 182 90 200 88 V110Z" fill="var(--sea-wet)" opacity=".55"/><path d="M62 52 C46 48 36 58 22 52" stroke="var(--sea-fur)" stroke-width="4.5" stroke-linecap="round" fill="none"/><path d="M70 62 L66 80 M82 66 L82 80 M112 66 L114 80 M124 62 L128 80" stroke="var(--sea-fur)" stroke-width="5.5" stroke-linecap="round" fill="none"/><ellipse cx="96" cy="56" rx="36" ry="13" fill="var(--sea-fur)"/><path d="M122 48 L150 38 L178 46 L178 52 L150 57 L128 64Z" fill="var(--sea-fur)"/><path d="M143 40 L147 29 L154 38Z" fill="var(--sea-fur)"/><circle cx="157" cy="44" r="1.9" fill="var(--sea-deep)"/><circle cx="15" cy="15" r="9.5" fill="var(--sea-fg)" stroke="var(--sea-deep)" stroke-width="1.5"/><text class="trek__n" x="15" y="19" text-anchor="middle">2</text></svg></div>
+          <div class="trek__txt"><span class="when">50 Mya<small>on land</small></span><span><b>Pakicetus</b>, a wolf-sized hoofed mammal, hunts along riverbanks in what is now Pakistan.</span></div>
+        </li>
+        <li>
+          <div class="trek__pic"><svg viewBox="0 0 200 110" role="img" aria-label="A long, low, crocodile-shaped mammal sliding off a bank, its front half under water."><rect width="200" height="110" fill="var(--sea-deep)"/><path d="M0 40 C40 44 76 70 110 110 H0Z" fill="var(--sea-dry)"/><g transform="rotate(8 100 62)"><path d="M64 62 C48 58 36 66 18 58" stroke="var(--sea-fur)" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M128 68 L134 82 L146 84 M82 68 L78 84 L90 87" stroke="var(--sea-fur)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><ellipse cx="104" cy="62" rx="44" ry="10" fill="var(--sea-fur)"/><path d="M140 54 L182 60 L182 65 L140 70Z" fill="var(--sea-fur)"/><circle cx="150" cy="58.5" r="1.9" fill="var(--sea-deep)"/></g><path d="M0 68 q12.5 -7 25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 V110 H0Z" fill="var(--sea-wet)" opacity=".3"/><circle cx="15" cy="15" r="9.5" fill="var(--sea-fg)" stroke="var(--sea-deep)" stroke-width="1.5"/><text class="trek__n" x="15" y="19" text-anchor="middle">3</text></svg></div>
+          <div class="trek__txt"><span class="when">49 Mya<small>wading back</small></span><span><b>Ambulocetus</b>, whose name means walking whale, paddles on big feet and ambushes prey like a crocodile.</span></div>
+        </li>
+        <li>
+          <div class="trek__pic"><svg viewBox="0 0 200 110" role="img" aria-label="A long, snake-like whale under water. A dashed ring marks a pair of tiny hind legs near its tail."><rect width="200" height="110" fill="var(--sea-deep)"/><path d="M36 57 L16 44 L24 58 L16 72Z" fill="var(--sea-skin)"/><path d="M34 58 C58 34 88 78 120 56 S162 46 170 52" stroke="var(--sea-skin)" stroke-width="13" stroke-linecap="round" fill="none"/><ellipse cx="177" cy="52" rx="17" ry="7.5" fill="var(--sea-skin)"/><ellipse cx="150" cy="56" rx="10" ry="4" transform="rotate(35 150 56)" fill="var(--sea-fin)"/><path d="M70 62 L66 72 L71 74" stroke="var(--sea-fin)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="69" cy="69" r="11" fill="none" stroke="var(--sea-dry)" stroke-width="2" stroke-dasharray="4 4"/><circle cx="181" cy="50" r="1.7" fill="var(--sea-deep)"/><path d="M0 16 q12.5 -7 25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 V110 H0Z" fill="var(--sea-wet)" opacity=".3"/><circle cx="15" cy="15" r="9.5" fill="var(--sea-fg)" stroke="var(--sea-deep)" stroke-width="1.5"/><text class="trek__n" x="15" y="19" text-anchor="middle">4</text></svg></div>
+          <div class="trek__txt"><span class="when">40 Mya<small>at sea</small></span><span><b>Basilosaurus</b> is up to 18 metres long and never leaves the water. It still has tiny hind legs, ringed here, with knees and toes.</span></div>
+        </li>
+        <li>
+          <div class="trek__pic"><svg viewBox="0 0 200 110" role="img" aria-label="A dolphin under water. Arrows beside its tail point up and down."><rect width="200" height="110" fill="var(--sea-deep)"/><g transform="translate(196 16) scale(-.72 .72)"><path d="M118 36 C126 18 140 10 150 10 C143 22 143 30 148 38 Z" fill="var(--sea-fin)"/><path d="M18 66 L40 60 C48 44 80 34 110 34 C150 34 185 48 212 62 L232 46 L226 66 L234 84 L210 70 C180 84 140 90 100 88 C70 86 50 80 40 72 Z" fill="var(--sea-skin)"/><path d="M88 84 C92 98 102 106 112 108 C108 98 106 90 104 86 Z" fill="var(--sea-fin)"/><circle cx="56" cy="60" r="2.6" fill="var(--sea-deep)"/></g><path d="M13 49 V77" stroke="var(--sea-dry)" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M8 51 L13 41 L18 51Z M8 75 L13 85 L18 75Z" fill="var(--sea-dry)"/><path d="M0 14 q12.5 -7 25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 V110 H0Z" fill="var(--sea-wet)" opacity=".3"/><circle cx="15" cy="15" r="9.5" fill="var(--sea-fg)" stroke="var(--sea-deep)" stroke-width="1.5"/><text class="trek__n" x="15" y="19" text-anchor="middle">5</text></svg></div>
+          <div class="trek__txt"><span class="when">Today<small>at sea</small></span><span><b>Dolphins.</b> The hind legs are gone, apart from buds that appear in the embryo and fade. The tail beats up and down.</span></div>
+        </li>
       </ol>
+      <figcaption>Yellow is dry land. Each animal is drawn at its own scale.</figcaption>
     </figure>
     <div class="plate__body">
       <p>Some 375 million years ago, fish hauled themselves onto land. Their descendants grew legs, lungs and fur, and in time became mammals. Then, about 50 million years ago, one hoofed mammal started wading back in.</p>
